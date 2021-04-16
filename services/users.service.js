@@ -64,8 +64,8 @@ class DBUsersService {
 
         if (user) {
             if (bcrypt.compareSync(userBody.password, user.password)) {
-                const token = jwt.sign({login, type: 'access'}, SECRET_KEY)
-                return {token, user}
+                const token = jwt.sign({login, type: 'access'}, SECRET_KEY);
+                return {token, user};
             } else {
                 return {message: 'Incorrect password.'}
             }
@@ -130,8 +130,8 @@ class DBUsersService {
                 where: {
                     id: id
                 }
-            })
-            return {message: 'User has been deleted.'}
+            });
+            return {message: 'User has been deleted.'};
         }
         else {
             return {message: 'User does not exist.'}

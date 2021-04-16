@@ -11,4 +11,4 @@ const storageConfig = multer.diskStorage({
     }
 });
 
-module.exports = multer({storage: storageConfig}).single('filedata')
+module.exports = multer({storage: storageConfig}).single('filedata');

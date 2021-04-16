@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
 const controller = require('../controllers/users.controller');
 const auth = require('../middlewares/auth.middleware');
 const validate = require('../middlewares/validation.middleware');
 const createUserScheme = require('../validation-schemes/create-user.scheme');
-const updateUserScheme = require('../validation-schemes/update-user.scheme');
-const multer = require('../middlewares/multer.middleware')
+const multer = require('../middlewares/multer.middleware');
 
 router
     .get('/', controller.getAll)

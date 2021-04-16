@@ -29,8 +29,6 @@ const auth = (role) => async (req, res, next) => {
                 next()
             }
         }
-
-
     }
     catch (e) {
         res.status(401).send(e.message)

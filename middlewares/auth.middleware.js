@@ -12,15 +12,25 @@ const auth = (role) => async (req, res, next) => {
                 login: result.login
             }
         })
-        if(!user){
-            throw new Error('User is not found.')
+        if(user.dataValues.role === 'admin'){
+            next();
         }
-        if(role !== user.role){
-            throw new Error('Role is incorrect for this operation.')
+        else if(role === 'user'){
+            if(+req.params.id !== user.dataValues.id){
+                throw new Error('Access denied.')
+            }
+            if(!user){
+                throw new Error('User is not found.')
+            }
+            if(role !== user.role){
+                throw new Error('Role is incorrect for this operation.')
+            }
+            else {
+                next()
+            }
         }
-        else {
-            next()
-        }
+
+
     }
     catch (e) {
         res.status(401).send(e.message)

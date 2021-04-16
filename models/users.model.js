@@ -13,6 +13,11 @@ User.init({
         allowNull: false,
         unique: true
     },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
     login: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -25,6 +30,16 @@ User.init({
             this.setDataValue('password', bcrypt.hashSync(val, 10));
         }
     },
+    firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: false
+    },
+    secondName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: false
+    },
     role: {
         type: DataTypes.ENUM('user', 'admin'),
         defaultValue: 'user'
@@ -33,6 +48,6 @@ User.init({
         type: DataTypes.STRING,
         allowNull: true
     }
-}, {sequelize, modelName: 'user', tableName: 'user'});
+}, {sequelize, modelName: 'user', tableName: 'user4'});
 
 module.exports = User;

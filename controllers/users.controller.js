@@ -1,4 +1,4 @@
-const usersService = require('../services/users.serviceDB')
+const usersService = require('../services/users.service')
 
 class UsersController{
     constructor() {
@@ -23,7 +23,7 @@ class UsersController{
     login = async (req, res) => {
         res
             .status(200)
-            .send(await this.service.login(req.body.login, req.body.password))
+            .send(await this.service.login(req.body))
     }
     update = async (req, res) => {
         res

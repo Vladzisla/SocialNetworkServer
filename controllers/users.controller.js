@@ -15,6 +15,12 @@ class UsersController{
             .status(200)
             .send(await this.service.get(req.params.id))
     }
+    authCheck = async (req, res) => {
+        res
+            .status(200)
+            // .send(await this.service.get(1))
+            .send(await this.service.authCheck(req))
+    }
     create = async (req, res) => {
         res
             .status(200)

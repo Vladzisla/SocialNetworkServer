@@ -20,6 +20,19 @@ class DBUsersService {
         })
     }
 
+    authCheck = async (req) => {
+
+            const [, token] = req.headers['authorization'].split(' ');
+            const result = jwt.verify(token, 'secret');
+
+            const user = await User.findOne({
+                where: {
+                    login: result.login
+                }
+            })
+            return {id: user.dataValues.id, role: user.dataValues.role};
+    }
+
     create = async (userBody) => {
         const user = await User.findOne({
             where: {

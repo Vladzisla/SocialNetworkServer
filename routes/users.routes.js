@@ -10,6 +10,7 @@ const multer = require('../middlewares/multer.middleware')
 
 router
     .get('/', controller.getAll)
+    .get('/auth-check', controller.authCheck)
     .get('/:id', auth('user'), controller.get)
     .post('/registration',validate(createUserScheme), controller.create)
     .put('/login', controller.login)
